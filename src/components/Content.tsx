@@ -5,7 +5,7 @@ import { MenuItem } from "./MenuItem";
 import { OrderTotal } from "./OrderTotal";
 
 export function Content() {
-  const { order, setOrder,  addItem } = useOrder()
+  const { order, setOrder, tip, setTip, addItem } = useOrder()
 
   return (
     <main className="max-w-7xl mx-auto py-20 grid md:grid-cols-2"> 
@@ -29,7 +29,11 @@ export function Content() {
               order={order}
               setOrder={setOrder}
             />
-            <OrderTotal />
+            <OrderTotal 
+              order={order}
+              tip={tip}
+              setTip={setTip}
+            />
         </div>
       </div>
     </main>
