@@ -4,7 +4,12 @@ const tipOptions = [
   { id: "tip-50", value: 0.5, label: "50%" },
 ];
 
-export function Tip({ setTip }: { setTip: (tip: number) => void }) {
+interface TipProps {
+  tip: number;
+  setTip: (tip: number) => void;
+}
+
+export function Tip({ tip, setTip }: TipProps) {
   return (
     <div>
       <form>
@@ -16,6 +21,7 @@ export function Tip({ setTip }: { setTip: (tip: number) => void }) {
               name="tip" 
               value={option.value}
               onChange={((e) => setTip(+e.target.value))}
+              checked={tip === option.value}
             />
             <label htmlFor={option.id} className="ml-2">{option.label}</label>
           </div>

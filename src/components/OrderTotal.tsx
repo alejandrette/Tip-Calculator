@@ -6,9 +6,10 @@ interface OrderTotalProps {
   order: OrderItem[];
   tip: number;
   setTip: (tip: number) => void;
+  placeOrder: () => void;
 }
 
-export function OrderTotal({ order, tip, setTip }: OrderTotalProps) {
+export function OrderTotal({ order, tip, setTip, placeOrder }: OrderTotalProps) {
   const subtotal: number = useMemo(() => order.reduce((acc, value) => acc + (value.price * value.quantity), 0), [order])
   const tax: number = useMemo(() => tip * subtotal, [tip, subtotal])
   const total: number = useMemo(() => subtotal + tax, [subtotal, tax])
@@ -27,6 +28,7 @@ export function OrderTotal({ order, tip, setTip }: OrderTotalProps) {
             <span className="font-bold">${tax}</span>
           </div>
           <Tip 
+            tip={tip}
             setTip={setTip}
           />
           <div className="flex justify-between mt-2">
@@ -34,6 +36,13 @@ export function OrderTotal({ order, tip, setTip }: OrderTotalProps) {
             <span className="font-bold">${total}</span>
           </div>
         </div>
+        <button
+          className={`mt-5 px-4 py-2 rounded-lg ${total === 0 ? 'cursor-not-allowed bg-teal-300 text-white' : 'hover:bg-teal-600 text-black bg-teal-500'}`}
+          onClick={placeOrder}
+          disabled={total === 0}
+        >
+          Save Order
+        </button>
       </div>
     </>
   )

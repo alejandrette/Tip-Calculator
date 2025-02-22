@@ -15,6 +15,10 @@ export function useOrder() {
       setOrder(newOrder)
     }
   }
+
+  const placeOrder = () => {
+    setOrder([])
+  }
   
-  return { order, setOrder, tip, setTip, addItem }
+  return { order, setOrder, tip, setTip, addItem, placeOrder }
 }
