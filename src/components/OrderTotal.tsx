@@ -37,7 +37,7 @@ export function OrderTotal({ order, tip, setTip, placeOrder }: OrderTotalProps) 
           </div>
         </div>
         <button
-          className={`mt-5 px-4 py-2 rounded-lg ${total === 0 ? 'cursor-not-allowed bg-teal-300 text-white' : 'hover:bg-teal-600 text-black bg-teal-500'}`}
+          className='mt-5 px-4 py-2 rounded-lg hover:bg-teal-600 text-black bg-teal-500'
           onClick={placeOrder}
           disabled={total === 0}
         >

@@ -8,8 +8,8 @@ export function Content() {
   const { order, setOrder, tip, setTip, addItem, placeOrder } = useOrder()
 
   return (
-    <main className="max-w-7xl mx-auto py-10 grid md:grid-cols-2"> 
-      <div className="max-h-[500px] overflow-y-auto p-4 scrollbar-hide">
+    <main className="max-w-7xl mx-auto py-5 grid md:grid-cols-2"> 
+      <div className="max-h-[400px] md:max-h-[500px] overflow-y-auto p-4 scrollbar-hide">
         <h2 className="text-3xl font-bold">Menu</h2>
         <div className="mt-10 space-y-3 mr-5">
           {menuItems.map(item => (

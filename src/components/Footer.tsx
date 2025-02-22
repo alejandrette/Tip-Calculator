@@ -13,7 +13,6 @@ export function Footer() {
         >
           <FaGithub className="mr-2" /> Visit my GitHub
         </a>
-        <p className="mt-4 text-xs">© 2025 Tip Calculator. All rights reserved.</p>
       </div>
     </footer>
   )
