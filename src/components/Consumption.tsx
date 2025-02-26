@@ -1,11 +1,13 @@
+import { Dispatch } from "react";
+import { OrderActions } from "../reducers/order-reducer";
 import { OrderItem } from "../types/menuItem";
 
 interface ConsumptionProps {
   order: OrderItem[];
-  setOrder: (order: OrderItem[]) => void;
+  dispatch: Dispatch<OrderActions>
 }
 
-export function Consumption({ order, setOrder }: ConsumptionProps) {
+export function Consumption({ order, dispatch }: ConsumptionProps) {
   const isEmpty: boolean = order.length === 0
 
   return (
@@ -21,10 +23,7 @@ export function Consumption({ order, setOrder }: ConsumptionProps) {
             </div>
             <button
               className="flex items-center justify-center rounded-full h-8 w-8 bg-red-600 text-white text-lg font-bold"
-              onClick={() => {
-                const newOrder = order.filter(orderItem => orderItem.id !== item.id)
-                setOrder(newOrder)
-              }}
+              onClick={() => {dispatch({ type: 'remove-item', payload: { id: item.id } })}}
             >
               x
             </button>

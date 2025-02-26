@@ -1,11 +1,12 @@
+import { useReducer } from "react";
 import { menuItems } from "../data/db";
-import { useOrder } from "../hooks/useOrder";
 import { Consumption } from "./Consumption";
 import { MenuItem } from "./MenuItem";
 import { OrderTotal } from "./OrderTotal";
+import { initialState, orderReducer } from "../reducers/order-reducer";
 
 export function Content() {
-  const { order, setOrder, tip, setTip, addItem, placeOrder } = useOrder()
+  const [state, dispatch] = useReducer(orderReducer, initialState)
 
   return (
     <main className="max-w-7xl mx-auto py-5 grid md:grid-cols-2"> 
@@ -16,7 +17,7 @@ export function Content() {
             <MenuItem
               key={item.id}
               item={item}
-              addItem={addItem}
+              dispatch={dispatch}
             />
           ))}
         </div>
@@ -26,15 +27,14 @@ export function Content() {
         <h2 className="text-3xl font-bold">Consumption</h2>
         <div className="mt-10 space-y-3">
             <Consumption
-              order={order}
-              setOrder={setOrder}
+              order={state.order}
+              dispatch={dispatch}
             />
-            {order.length > 0 && (
+            {state.order.length > 0 && (
               <OrderTotal 
-                order={order}
-                placeOrder={placeOrder}
-                tip={tip}
-                setTip={setTip}
+                order={state.order}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                dispatch={dispatch}
+                tip={state.tip}
               />
             )}
         </div>
